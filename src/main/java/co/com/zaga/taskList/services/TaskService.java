@@ -19,6 +19,11 @@ import co.com.zaga.taskList.model.dto.TaskDto;
 import co.com.zaga.taskList.model.dto.UserDto;
 import co.com.zaga.taskList.repository.TaskRepository;
 
+/***
+ * Service for handling {@link Task} per User
+ * @author jose.nino
+ *
+ */
 @Service
 public class TaskService {
 
@@ -33,6 +38,11 @@ public class TaskService {
 		validator = Validation.buildDefaultValidatorFactory().getValidator();
 	}
 
+	/**
+	 * Create a new {@link Task} for a specific user
+	 * @param taskDto {@link Task} Model
+	 * @return {@link Long} - id of the new {@link Task} created
+	 */
 	public Long createTask(TaskDto taskDto) {
 		
 		Task task = new Task();
@@ -50,12 +60,22 @@ public class TaskService {
 		return taskRepository.save(task).getId();
 	}
 
+	/**
+	 * Update the status of an existing {@link Task}
+	 * @param id {@link Task} id
+	 * @param taskStatus new {@link TaskStatus} of the {@link Task} 
+	 */
 	public void updateTaskStatus(Long id, TaskStatus taskStatus) {
 		Task task = taskRepository.getOne(id);
 		task.setStatus(taskStatus);
 		taskRepository.save(task);
 	}
 
+	/**
+	 * Retrieve a {@link Task} 
+	 * @param id {@link Task} id
+	 * @return {@link TaskDto}
+	 */
 	public TaskDto getTask(Long id) {
 		Task task = taskRepository.getOne(id);
 
@@ -63,6 +83,12 @@ public class TaskService {
 				task.getStatus(), new UserDto(task.getUser().getId(), task.getUser().getName()));
 	}
 
+	/**
+	 * Retrieve all the {@link Task} for an specific {@link USer}
+	 * @param id {@link User} id
+	 * @param pageRequest {@link Pageable} object
+	 * @return {@link PageTaskInfo}
+	 */
 	public PageTaskInfo getTasks(Long id, Pageable pageRequest) {
 
 		Page<Task> pageTasks = taskRepository.findByUser(userService.getUser(id).orElse(new User()), pageRequest);

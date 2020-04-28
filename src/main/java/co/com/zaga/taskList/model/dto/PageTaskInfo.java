@@ -2,6 +2,11 @@ package co.com.zaga.taskList.model.dto;
 
 import java.util.List;
 
+/**
+ * Represent the number of {@link Task} and pagination distribution  
+ * @author jose.nino
+ *
+ */
 public class PageTaskInfo {
 
 	private long nroPage;

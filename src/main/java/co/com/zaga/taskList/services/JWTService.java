@@ -13,6 +13,11 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/**
+ * Service that generate and validate Java Web Tokens
+ * @author jose.nino
+ *
+ */
 @Service
 public class JWTService {
 

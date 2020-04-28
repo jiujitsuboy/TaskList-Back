@@ -4,6 +4,11 @@ import java.time.LocalDate;
 
 import co.com.zaga.taskList.model.TaskStatus;
 
+/**
+ * Represent a {@link Task}
+ * @author jose.nino
+ *
+ */
 public class TaskDto {
 
 	private long id;

@@ -7,11 +7,17 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.com.zaga.taskList.model.Task;
 import co.com.zaga.taskList.model.User;
 import co.com.zaga.taskList.model.dto.TaskDto;
 import co.com.zaga.taskList.model.dto.UserDto;
 import co.com.zaga.taskList.repository.UserRepository;
 
+/***
+ * Service for handling  {@link User} authentication
+ * @author jose.nino
+ *
+ */
 @Service
 public class UserService {
 
@@ -23,6 +29,12 @@ public class UserService {
 		createUser();
 	}
 
+	/**
+	 * Validate  {@link User} credentials
+	 * @param user username
+	 * @param password user password
+	 * @return {@link UserDto} model
+	 */
 	public UserDto validateCredentials(String user, String password) {
 
 		return userRepository.findByName(user).map(u -> {
@@ -38,10 +50,20 @@ public class UserService {
 		}).orElse(new UserDto(-1, ""));
 	}
 
+	/**
+	 * Retrieve the especific {@link User}
+	 * @param id {@link User} id
+	 * @return {@link Optional<User>}
+	 */
 	public Optional<User> getUser(Long id) {
 		return userRepository.findById(id);
 	}
 
+	/**
+	 * Retrieve {@link User} {@link Task} 
+	 * @param id {@link User} id
+	 * @return {@link List<TaskDto>}
+	 */
 	public List<TaskDto> getTasks(Long id) {
 		return userRepository.findById(id)
 				.map(u -> u.getTasks().stream()
@@ -51,6 +73,9 @@ public class UserService {
 				.orElse(null);
 	}
 
+	/**
+	 * Create users in BD for testing purposes
+	 */
 	private void createUser() {
 		User user = new User();
 		user.setName("user1");

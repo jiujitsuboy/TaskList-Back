@@ -11,7 +11,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-
+/**
+ * Database entity for {@link UserDto}
+ * @author jose.nino
+ *
+ */
 @Entity
 public class User {
 

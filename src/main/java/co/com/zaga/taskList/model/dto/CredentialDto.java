@@ -1,5 +1,10 @@
 package co.com.zaga.taskList.model.dto;
 
+/**
+ * Represent the User Credentials
+ * @author jose.nino
+ *
+ */
 public class CredentialDto {
 	
 	private String user;

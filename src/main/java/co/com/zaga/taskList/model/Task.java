@@ -12,6 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Database entity for {@link TaskDto}
+ * @author jose.nino
+ *
+ */
 @Entity
 public class Task {
 

@@ -2,6 +2,11 @@ package co.com.zaga.taskList.model.dto;
 
 import java.util.List;
 
+/**
+ * Represent a {@link User}
+ * @author jose.nino
+ *
+ */
 public class UserDto {
 
 	private long id;

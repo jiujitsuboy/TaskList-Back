@@ -14,13 +14,21 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import co.com.zaga.taskList.services.JWTService;
 import io.jsonwebtoken.Claims;
 
-
+/**
+ * {@link UsOncePerRequestFilterer} who inspect every Http request to extract Http header 'Authorization' and validate it
+ * against {@link JWTService} 
+ * @author jose.nino
+ *
+ */
 @Component
 public class TaskListFilter extends OncePerRequestFilter {
 	
 	private static Set<String> skipURIs = Set.of("/user/login");
 	private static String AUTH_HEADER = "Authorization";
 	
+	/**
+	 * Filter which inspect every Http request to Controllers and create a Http header with the result of the token validation
+	 */
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {

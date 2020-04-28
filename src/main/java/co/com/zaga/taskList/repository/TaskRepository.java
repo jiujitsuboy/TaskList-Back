@@ -8,7 +8,11 @@ import org.springframework.stereotype.Repository;
 import co.com.zaga.taskList.model.Task;
 import co.com.zaga.taskList.model.User;
 
-
+/**
+ * {@link Task} Repository
+ * @author jose.nino
+ *
+ */
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
